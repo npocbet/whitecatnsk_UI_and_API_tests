@@ -1,0 +1,16 @@
+
+
+Github repository created: github.com/autotests-cloud/AUTO-566
+
+Autotests code generated: github.com/.../tests/GeneratedTests.java
+
+Code stack: Java, Gradle, JUnit5, AssertJ, Owner, Rest-Assured, Selenide, Allure
+
+ 
+
+Jenkins job created: jenkins.autotests.cloud/job/AUTO-566
+
+Jenkins job launched, autotests are running (~1 min): /1/console 
+ 
+
+Infrastructure stack: Github, Jenkins, Docker, Selenoid

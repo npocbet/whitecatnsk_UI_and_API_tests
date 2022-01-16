@@ -17,6 +17,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith({AllureJunit5.class})
 public class TestBase {
+    public Integer numberOfSlides;
+    public Integer numberOfCategories;
+    public Integer currentSlide;
+    public Integer currentCategory;
+    public String productName;
+
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());

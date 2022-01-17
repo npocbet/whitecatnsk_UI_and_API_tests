@@ -1,5 +1,6 @@
 package cloud.autotests.tests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -92,5 +93,41 @@ public class CatalogTests extends TestBase {
         });
 
     }
+
+    @Test
+    @DisplayName("Random product has all UI-elements")
+    @Description("All of products should have all standart UI-elements")
+    void TestProductUIElements() {
+
+        step("Open main page", () -> {
+            open("/");
+        });
+
+        step("Open the first product", () -> {
+            $(".product-item__image").click();
+        });
+
+        step("Check UI-element title", () -> {
+            $(".product-head__title").shouldBe(Condition.enabled);
+        });
+
+        step("Check UI-element price", () -> {
+            $(".product-num__price").shouldBe(Condition.enabled);
+        });
+
+        step("Check UI-element buscet button", () -> {
+            $(".product-price-btn_green").shouldBe(Condition.enabled);
+        });
+
+        step("Check credit button", () -> {
+            $("a.line-elem_list").shouldBe(Condition.enabled);
+        });
+
+        step("Check image", () -> {
+            $("div.big_pic a").shouldBe(Condition.enabled);
+        });
+
+    }
+
 
 }

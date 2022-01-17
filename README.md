@@ -1,5 +1,5 @@
-# The test automation project for JOB.OZON.RU
-<a target="_blank" href="https://job.ozon.ru/">OZON job</a>
+# The test automation project for whitecatnsk.ru
+<a target="_blank" href="https://www.whitecatnsk.ru/">White cat NSK</a>
 
 ## The project is done with the following technologies:
 <a href="https://www.java.com/en/">
@@ -20,15 +20,15 @@
 <a href="https://docs.qameta.io/allure/">
     <img src="media/icons/Allure_Report_icon.svg" width="40" height="40"  alt="Allure SE"/>
 </a>
-<a href="https://github.com/npocbet/qaguru_13">
+<a href="https://github.com/npocbet/whitecatnsktests">
     <img src="media/icons/Github_icon.png" width="40" height="40"  alt="Github"/>
 </a>
 
 ## Jenkins job
-<a target="_blank" href="https://jenkins.autotests.cloud/job/09-npocbet_hw_13/">jenkins.autotests.cloud/job/</a>
+<a target="_blank" href="https://jenkins.autotests.cloud/job/whitecatnsk/">jenkins.autotests.cloud/job/</a>
 
 ## Infrastructure:
-<a href="https://jenkins.autotests.cloud/job/09-npocbet_hw_13/">
+<a href="https://jenkins.autotests.cloud/job/whitecatnsk/">
     <img src="media/icons/Jenkins_icon.svg" width="40" height="40"  alt="Jenkins"/>
 </a>
 <a href="https://selenoid.autotests.cloud/#/">
@@ -50,7 +50,7 @@
 ### For run remote tests need fill remote.properties or to pass value:
 
 * browser (default chrome)
-* browserVersion (default 91.0)
+* browserVersion (default 96.0)
 * browserSize (default 1920x1080)
 * browserMobileView (mobile device name, for example iPhone X)
 * remoteDriverUrl (url address from selenoid or grid)

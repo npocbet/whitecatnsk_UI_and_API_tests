@@ -1,9 +1,6 @@
 package cloud.autotests.tests;
 
-import cloud.autotests.helpers.DriverUtils;
-import com.codeborne.selenide.*;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +15,7 @@ public class CatalogTests extends TestBase {
     @Test
     @DisplayName("Products on a random slider page")
     @Description("slider element is available and there are some products on a random slider page")
-    void sliderTest(){
+    void sliderTest() {
         step("Open main page", () -> {
             open("/");
         });
@@ -46,7 +43,7 @@ public class CatalogTests extends TestBase {
     @Test
     @DisplayName("Products on category page")
     @Description("Catalog is available and there are some products on a random category page")
-    void CategoryTest(){
+    void CategoryTest() {
         step("Open main page", () -> {
             open("/");
         });
@@ -75,6 +72,25 @@ public class CatalogTests extends TestBase {
         });
     }
 
-    // TODO Написать тест, чтобы у всех товаров в разделе акции была надпись акция и снижена цена
+    @Test
+    @DisplayName("All promo products is realy promo")
+    @Description("All promo products should have a label акция")
+    void PromotionTest() {
+
+        step("Open promo page", () -> {
+            open("/catalog/nabory/");
+        });
+
+        step("Open all the promo products", () -> {
+            $$("[rel=nofollow]").last().click();
+        });
+
+        step("Check promo label", () -> {
+            numberOfProducts = $$(".product-item").size();
+            numberOfPromoLabels = $$(".product-item__label").size();
+            assertThat(numberOfProducts).isEqualTo(numberOfPromoLabels);
+        });
+
+    }
 
 }

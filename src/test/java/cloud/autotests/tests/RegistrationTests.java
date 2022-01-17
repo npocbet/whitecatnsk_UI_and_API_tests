@@ -1,8 +1,8 @@
 package cloud.autotests.tests;
 
+import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -31,18 +31,17 @@ public class RegistrationTests extends TestBase{
             $("#prof-auth").click();
         });
 
-        step("Chose sign in by emal", () -> {
+        step("Chose sign in by email", () -> {
             $(".basic-popup__link").click();
         });
 
-        step("Chose sign in by emal", () -> {
+        step("Chose sign in by email", () -> {
             $$(".basic-popup__label").first().shouldHave(text("почта"));
         });
 
     }
 
     @Test
-    @Disabled("email registration doesn't work")
     @DisplayName("Products on category page")
     @Description("Catalog is available and there are some products on a random category page")
     void EmailRegistrationTest2() {
@@ -54,7 +53,7 @@ public class RegistrationTests extends TestBase{
             $("#prof-auth").click();
         });
 
-        step("Chose sign in by emal", () -> {
+        step("Chose sign in by email", () -> {
             $(".basic-popup__link").click();
         });
 
@@ -62,13 +61,16 @@ public class RegistrationTests extends TestBase{
             $(".basic-input_phone").sendKeys(email);
         });
 
+        step("Check email entered correctly", () -> {
+            $(".basic-input_phone").shouldHave(Condition.text(email));
+        });
+
         step("Enter password", () -> {
             $(".basic-input_password").sendKeys(getRandomString(8));
         });
 
-        step("Submit emal and password", () -> {
-            $(".action__login_password").click();
-            sleep(20000);
+        step("Submit email and password", () -> {
+            $(".action__login_password").shouldBe(Condition.enabled);
         });
 
     }

@@ -5,11 +5,12 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static cloud.autotests.utils.RandomUtils.getRandomInt;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BascetTests extends TestBase{
+public class BuscetTests extends TestBase{
     @Test
     @DisplayName("Products quantity after adding to the buscet and increment")
     @Description("Quantity of the product after adding to the buscet and increment should be equal 2")
@@ -41,8 +42,35 @@ public class BascetTests extends TestBase{
             //.cart-table__body .cart-table__row .counter .value
             int quantityOfProduct = Integer.parseInt($$(".column__name").filter(Condition.text(productName))
                             .first().parent().$(".column__quantity .value").text());
-            sleep(5000);
             assertThat(quantityOfProduct).isEqualTo(2);
+        });
+    }
+
+    @Test
+    @DisplayName("Products quantity after multiple adding to the buscet")
+    @Description("Quantity of the product after multiple adding to the buscet should be equal number of multiplies")
+    void ProductQuantityTest2(){
+
+        numberOfChecks = getRandomInt(2, 5);
+
+        for (Integer i = 0; i < numberOfChecks; i++) {
+            step("Open main page", () -> {
+                open("/");
+            });
+
+            step("Open the first product", () -> {
+                $(".product-item__image").click();
+            });
+
+            step("Add product to the buscet", () -> {
+                productName = $(".product-head__title").text();
+
+                $(".product-price-btn_green").click();
+            });
+        }
+
+        step("Find count label on the buscet. Its quantity should be equal 1", () -> {
+            $(".header-item__count").shouldBe(Condition.text(numberOfChecks.toString()));
         });
     }
 }

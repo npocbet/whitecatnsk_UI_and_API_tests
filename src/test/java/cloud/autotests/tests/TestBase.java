@@ -22,6 +22,9 @@ public class TestBase {
     public Integer currentSlide;
     public Integer currentCategory;
     public String productName;
+    public Integer numberOfProducts;
+    public Integer numberOfPromoLabels;
+    public Integer numberOfChecks;
 
     @BeforeAll
     static void setUp() {

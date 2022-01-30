@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "premium": true,
+      "maintenance": false,
+      "config_updated_ts": 1624464205,
+      "agents": [
+        {
+          "agent_id": 472479,
+          "display_name": "Ирина",
+          "title": "Эксперт по чистоте",
+          "avatar_url": "327165/61ee2fe84c193.jpg"
+        }
+      ]
+    }
+  ],
+  "required": [
+    "premium",
+    "maintenance",
+    "config_updated_ts",
+    "agents"
+  ],
+  "properties": {
+    "premium": {
+      "$id": "#/properties/premium",
+      "type": "boolean",
+      "title": "The premium schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "maintenance": {
+      "$id": "#/properties/maintenance",
+      "type": "boolean",
+      "title": "The maintenance schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "config_updated_ts": {
+      "$id": "#/properties/config_updated_ts",
+      "type": "integer",
+      "title": "The config_updated_ts schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        1624464205
+      ]
+    },
+    "agents": {
+      "$id": "#/properties/agents",
+      "type": "array",
+      "title": "The agents schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "agent_id": 472479,
+            "display_name": "Ирина",
+            "title": "Эксперт по чистоте",
+            "avatar_url": "327165/61ee2fe84c193.jpg"
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/agents/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/agents/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "agent_id": 472479,
+                "display_name": "Ирина",
+                "title": "Эксперт по чистоте",
+                "avatar_url": "327165/61ee2fe84c193.jpg"
+              }
+            ],
+            "required": [
+              "agent_id",
+              "display_name",
+              "title",
+              "avatar_url"
+            ],
+            "properties": {
+              "agent_id": {
+                "$id": "#/properties/agents/items/anyOf/0/properties/agent_id",
+                "type": "integer",
+                "title": "The agent_id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  472479
+                ]
+              },
+              "display_name": {
+                "$id": "#/properties/agents/items/anyOf/0/properties/display_name",
+                "type": "string",
+                "title": "The display_name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Ирина"
+                ]
+              },
+              "title": {
+                "$id": "#/properties/agents/items/anyOf/0/properties/title",
+                "type": "string",
+                "title": "The title schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Эксперт по чистоте"
+                ]
+              },
+              "avatar_url": {
+                "$id": "#/properties/agents/items/anyOf/0/properties/avatar_url",
+                "type": "string",
+                "title": "The avatar_url schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "327165/61ee2fe84c193.jpg"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

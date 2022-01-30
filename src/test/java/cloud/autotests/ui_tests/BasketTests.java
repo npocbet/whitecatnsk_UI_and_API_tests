@@ -1,4 +1,4 @@
-package cloud.autotests.tests;
+package cloud.autotests.ui_tests;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BuscetTests extends TestBase{
+public class BasketTests extends TestBase{
     @Test
     @DisplayName("Products quantity after adding to the buscet and increment")
     @Description("Quantity of the product after adding to the buscet and increment should be equal 2")

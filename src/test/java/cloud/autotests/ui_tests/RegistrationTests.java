@@ -1,4 +1,4 @@
-package cloud.autotests.tests;
+package cloud.autotests.ui_tests;
 
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;

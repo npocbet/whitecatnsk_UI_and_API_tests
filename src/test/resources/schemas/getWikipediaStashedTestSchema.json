@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "stashedit": {
+        "status": "stashed",
+        "texthash": "7016b6ef295a58045b20ed7fa3d78737c42c332b"
+      }
+    }
+  ],
+  "required": [
+    "stashedit"
+  ],
+  "properties": {
+    "stashedit": {
+      "$id": "#/properties/stashedit",
+      "type": "object",
+      "title": "The stashedit schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "status": "stashed",
+          "texthash": "7016b6ef295a58045b20ed7fa3d78737c42c332b"
+        }
+      ],
+      "required": [
+        "status",
+        "texthash"
+      ],
+      "properties": {
+        "status": {
+          "$id": "#/properties/stashedit/properties/status",
+          "type": "string",
+          "title": "The status schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "stashed"
+          ]
+        },
+        "texthash": {
+          "$id": "#/properties/stashedit/properties/texthash",
+          "type": "string",
+          "title": "The texthash schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "7016b6ef295a58045b20ed7fa3d78737c42c332b"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

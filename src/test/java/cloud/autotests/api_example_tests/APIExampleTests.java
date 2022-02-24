@@ -1,6 +1,6 @@
-package cloud.autotests.api_tests;
+package cloud.autotests.api_example_tests;
 
-import cloud.autotests.api_tests.lombok.*;
+import cloud.autotests.api_example_tests.lombok.*;
 import io.qameta.allure.Description;
 import io.restassured.http.ContentType;
 import org.apache.commons.io.IOUtils;
@@ -10,14 +10,12 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static cloud.autotests.api_tests.filters.CustomLogFilter.customLogFilter;
-import static cloud.autotests.api_tests.specs.WhiteCatNskSpec.reqresRequestSpec;
-import static cloud.autotests.api_tests.specs.WhiteCatNskSpec.responseSpec;
+import static cloud.autotests.api_example_tests.filters.CustomLogFilter.customLogFilter;
+import static cloud.autotests.api_example_tests.specs.WhiteCatNskSpec.reqresRequestSpec;
+import static cloud.autotests.api_example_tests.specs.WhiteCatNskSpec.responseSpec;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

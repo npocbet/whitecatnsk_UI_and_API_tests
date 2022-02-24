@@ -1,11 +1,11 @@
-package cloud.autotests.api_tests.specs;
+package cloud.autotests.api_example_tests.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-import static cloud.autotests.api_tests.filters.CustomLogFilter.customLogFilter;
+import static cloud.autotests.api_example_tests.filters.CustomLogFilter.customLogFilter;
 import static io.restassured.RestAssured.with;
 
 public class WhiteCatNskSpec {

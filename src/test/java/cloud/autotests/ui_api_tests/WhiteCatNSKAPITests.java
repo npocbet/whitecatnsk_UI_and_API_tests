@@ -1,12 +1,12 @@
-package cloud.autotests.api_tests;
+package cloud.autotests.ui_api_tests;
 import com.codeborne.selenide.Condition;
 import io.restassured.http.ContentType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static cloud.autotests.api_tests.specs.WhiteCatNskSpec.whiteCatNskRequestSpec;
-import static cloud.autotests.api_tests.specs.WhiteCatNskSpec.responseSpec;
+import static cloud.autotests.api_example_tests.specs.WhiteCatNskSpec.whiteCatNskRequestSpec;
+import static cloud.autotests.api_example_tests.specs.WhiteCatNskSpec.responseSpec;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -17,6 +17,13 @@ public class WhiteCatNSKAPITests extends TestBase {
     @Test
     @DisplayName("add product to the cart via API")
     void addProductToBasketViaAPITest() {
+        step("Open main page", () -> {
+            open("/");
+        });
+
+        step("Get session cookie", () -> {
+            cookie = String.valueOf(webdriver().driver().getWebDriver().manage().getCookieNamed("PHPSESSID").getValue());
+        });
 
         step("Get product ID", () -> {
             productId = $(".product-item").getAttribute("id").split("_")[2];

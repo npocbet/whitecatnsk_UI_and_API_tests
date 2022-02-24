@@ -16,19 +16,14 @@ public class BasketTests extends TestBase {
     @Description("Quantity of the product after adding to the buscet and increment should be equal 2")
     void ProductQuantityTest() {
         step("Open main page", () -> open("/"));
-
         step("Open the first product", () ->
                 $(".product-item__image").click());
-
         step("Add product to the buscet", () -> {
             productName = $(".product-head__title").text();
             $(".product-price-btn_green").click();
         });
-
         step("Tap + to add one more item to the buscet", () -> $(".pluP").click());
-
         step("Open the buscet", () -> $(".product-price-btn_green").click());
-
         step("Find product on the buscet. Its quantity should be equal 2", () -> {
             //.cart-table__body .cart-table__row .counter .value
             int quantityOfProduct = Integer.parseInt($$(".column__name").filter(Condition.text(productName))
@@ -43,18 +38,14 @@ public class BasketTests extends TestBase {
     void ProductQuantityTest2() {
         //1st time
         step("Open main page", () -> open("/"));
-
         step("Open the first product", () -> $(".product-item__image").click());
-
         step("Add product to the buscet", () -> {
             productName = $(".product-head__title").text();
             $(".product-price-btn_green").click();
         });
         //2nd time
         step("Open main page", () -> open("/"));
-
         step("Open the first product", () -> $(".product-item__image").click());
-
         step("Add product to the buscet", () -> {
             productName = $(".product-head__title").text();
             $(".product-price-btn_green").click();

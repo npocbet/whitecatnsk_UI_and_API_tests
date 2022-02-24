@@ -18,15 +18,11 @@ public class WhiteCatNSKAPITests extends TestBase {
     @DisplayName("add product to the cart via API")
     void addProductToBasketViaAPITest() {
         step("Open main page", () -> open("/"));
-
         step("Get session cookie", () ->
             cookie = String.valueOf(webdriver().driver().getWebDriver().manage().getCookieNamed("PHPSESSID").getValue()));
-
         step("Get product ID", () ->
             productId = $(".product-item").getAttribute("id").split("_")[2]);
-
         step("add product to the buscet via API", () -> {
-
             given()
                     .spec(whiteCatNskRequestSpec)
                     .contentType("text/html; charset=utf-8")
@@ -36,9 +32,7 @@ public class WhiteCatNSKAPITests extends TestBase {
                     .then()
                     .spec(responseSpec);
         });
-
         step("Open cart", () -> open("/cart/"));
-
         step("Check product in the cart", () -> {
             int size = $$(".cart-table__row").filter(Condition.attribute("data-pid", productId)).size();
             Assertions.assertThat(size).isEqualTo(1);
@@ -56,6 +50,5 @@ public class WhiteCatNSKAPITests extends TestBase {
                         .then()
                         .spec(responseSpec)
                         .body(matchesJsonSchemaInClasspath("schemas/getWhiteCatNSKAPITestsSchema.json"));
-
     }
 }

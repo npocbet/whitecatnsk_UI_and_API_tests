@@ -5,6 +5,7 @@ import cloud.autotests.helpers.AllureAttachments;
 import cloud.autotests.helpers.DriverSettings;
 import cloud.autotests.helpers.DriverUtils;
 import cloud.autotests.pages.CatalogPage;
+import cloud.autotests.pages.NaboryPage;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.junit5.AllureJunit5;
@@ -26,6 +27,7 @@ public class TestBase {
     String rowID;
 
     CatalogPage catalogPP = new CatalogPage();
+    NaboryPage naboryPP = new NaboryPage();
 
     @BeforeAll
     static void setUp() {

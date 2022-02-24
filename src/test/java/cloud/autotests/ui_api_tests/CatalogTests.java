@@ -4,12 +4,7 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.qameta.allure.Allure.step;
-import static org.assertj.core.api.Assertions.assertThat;
-
-
 public class CatalogTests extends TestBase {
-
 
     @Test
     @DisplayName("Products on a random slider page")
@@ -35,18 +30,15 @@ public class CatalogTests extends TestBase {
     @DisplayName("All promo products is realy promo")
     @Description("All promo products should have a label акция")
     void PromotionTest() {
-
-        catalogPP.openPromoPage()
+        naboryPP.openPromoPage()
                 .openAllThePromoProducts()
                 .numberOfPromosShouldBeTheSameAsNumberOfElements();
-
     }
 
     @Test
     @DisplayName("Random product has all UI-elements")
     @Description("All of products should have all standart UI-elements")
     void TestProductUIElements() {
-
         catalogPP.openPage()
                 .clickProduct()
                 .checkUIElementTitle()
@@ -55,5 +47,4 @@ public class CatalogTests extends TestBase {
                 .checkUIElementCreditButton()
                 .checkUIElementImage();
     }
-
 }

@@ -15,7 +15,6 @@ public class CatalogPage {
     private final SelenideElement applyLocationButton = $$(".bam-ip-confirm-button-yes").last();
     private final SelenideElement catalogButton = $("#catalog-button");
     private final SelenideElement category = $(".header-submenu .header-submenu__title");
-    private final SelenideElement promoProductsButton = $$("[rel=nofollow]").last();
     private final SelenideElement product = $(".product-item__image");
     private final SelenideElement productTitle = $(".product-head__title");
     private final SelenideElement productPrice = $(".product-num__price");
@@ -25,8 +24,6 @@ public class CatalogPage {
 
     private final ElementsCollection slides = $$(".swiper-pagination span");
     private final ElementsCollection elements = $$(".js-more-container .product-item");
-    private final ElementsCollection products = $$(".product-item");
-    private final ElementsCollection promoLabels = $$(".product-item__label");
     public ElementsCollection categories = $$(".header-submenu .header-submenu__title");
 
     // actions
@@ -35,19 +32,9 @@ public class CatalogPage {
         return this;
     }
 
-    public CatalogPage openPromoPage() {
-        open("/catalog/nabory/");
-        return this;
-    }
-
     public void openTheCatalog() {
         applyLocationButton.click();
         catalogButton.click();
-    }
-
-    public CatalogPage openAllThePromoProducts() {
-        promoProductsButton.click();
-        return this;
     }
 
     public int countNumberOfSlides() {
@@ -74,33 +61,31 @@ public class CatalogPage {
         return this;
     }
 
-
     public void numberOfElementsShouldBeMoreThanZero() {
         assertThat(elements.size()).isGreaterThan(0);
-    }
-
-    public void numberOfPromosShouldBeTheSameAsNumberOfElements() {
-        assertThat(products.size()).isEqualTo(promoLabels.size());
     }
 
     public CatalogPage checkUIElementTitle(){
         productTitle.shouldBe(Condition.enabled);
         return this;
     }
+
     public CatalogPage checkUIElementPrice(){
         productPrice.shouldBe(Condition.enabled);
         return this;
     }
+
     public CatalogPage checkUIElementBuscetButton(){
         productBuscetButton.shouldBe(Condition.enabled);
         return this;
     }
+
     public CatalogPage checkUIElementCreditButton(){
         productCreditButton.shouldBe(Condition.enabled);
         return this;
     }
+
     public void checkUIElementImage(){
         productImage.shouldBe(Condition.enabled);
     }
-
 }

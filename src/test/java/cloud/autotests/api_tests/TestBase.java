@@ -29,8 +29,5 @@ public class TestBase {
         step("Get session cookie", () -> {
             cookie = String.valueOf(webdriver().driver().getWebDriver().manage().getCookieNamed("PHPSESSID").getValue());
         });
-
     }
-
-
 }

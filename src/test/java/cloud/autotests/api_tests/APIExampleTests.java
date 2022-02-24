@@ -3,9 +3,15 @@ package cloud.autotests.api_tests;
 import cloud.autotests.api_tests.lombok.*;
 import io.qameta.allure.Description;
 import io.restassured.http.ContentType;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,16 +23,13 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class SomeAPIExampleTests {
+public class APIExampleTests {
 
     @Test
     @DisplayName("Check wikipedia response after editing some unprotected page")
-    void wikipediaCheckEditSomeUnprotectedPageTest() {
-        String data = "action=stashedit&format=json&formatversion=2&title=%D0%A6%D0%B8%D0%BC%D0%B1%D0%B0%D0%BB%D1%8E%D0%BA" +
-                "&section=&sectiontitle=&summary=&contentmodel=wikitext&contentformat=text%2Fx-wiki&baserevid=61150812" +
-                "&text=%23REDIRECT+%5B%5B%D0%A6%D1%8B%D0%BC%D0%B1%D0%B0%D0%BB%D1%8E%D0%BA%5D%5D%0A%D1%84%D1%8B%D0%B2%D" +
-                "0%BB%D1%8B%D0%B4%D0%B2%D0%BB%D0%B4%D0%BB%D0%B4%D0%BB%D1%8B%D0%B2%D1%84%D1%8B%D0%B2&token=%2B%5C";
-
+    void wikipediaCheckEditSomeUnprotectedPageTest() throws IOException {
+        File exampleFile = new File("src/test/resources/stringDataForAPIExampleTests.txt");
+        String data = IOUtils.toString(new FileReader(exampleFile));
 
         given()
                 .filter(customLogFilter().withCustomTemplates())
@@ -40,11 +43,9 @@ public class SomeAPIExampleTests {
                 .then()
                 .spec(responseSpec)
                 .body(matchesJsonSchemaInClasspath("schemas/getWikipediaStashedTestSchema.json"));
-
     }
 
-
-    @Description("Trying to create a user, date of creation should be current date")
+    @Description("Date of create user should be current")
     @Test
     void createAUser(){
         String newUserData = "{\"name\": \"morpheus\", \"job\": \"leader\"}";
@@ -60,9 +61,7 @@ public class SomeAPIExampleTests {
                 .response()
                 .path("createdAt");
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
-
         assertThat(response).contains(formatForDateNow.format(date));
-
     }
 
     @Test
@@ -83,7 +82,6 @@ public class SomeAPIExampleTests {
         assertThat(response.getCreatedAt()).isNotBlank();
     }
 
-
     @Test
     @DisplayName("Check size of userlist")
     void getUserListwithLombokAndCheckSizeTest() {
@@ -96,7 +94,6 @@ public class SomeAPIExampleTests {
                         .log().body()
                         .extract().as(Users.class);
         assertThat(data.getData().size()).isEqualTo(6);
-
     }
 
     @Test
@@ -125,7 +122,6 @@ public class SomeAPIExampleTests {
                 .extract().as(NewUserResponse.class);
 
         assertThat(response.getUpdatedAt()).isNotBlank();
-
     }
 
     @Test
@@ -138,7 +134,6 @@ public class SomeAPIExampleTests {
                 .log().body()
                 .body("data.findAll{it.email =~/.*?@reqres.in/}.email.flatten()",
                         hasItem("tracey.ramos@reqres.in"));
-
     }
 
     @Test
@@ -150,6 +145,5 @@ public class SomeAPIExampleTests {
                         .then()
                         .log().body()
                         .body("data", hasEntry("last_name", "Weaver"));
-
     }
 }
